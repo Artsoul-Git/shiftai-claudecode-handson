@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>和モダン ─ WEB名刺サンプル</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700;800&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Shippori Mincho",serif;background:#f4ecdc;color:#1c2845;min-height:100vh;display:flex;justify-content:center;padding:24px 16px;background-image:radial-gradient(circle at 20% 10%,rgba(180,30,30,.04) 0,transparent 40%),radial-gradient(circle at 80% 90%,rgba(28,40,69,.05) 0,transparent 40%),repeating-linear-gradient(135deg,transparent 0,transparent 4px,rgba(180,30,30,.015) 4px,rgba(180,30,30,.015) 5px);background-attachment:fixed}
+.stage{width:100%;max-width:1000px;position:relative}
+.seal{position:absolute;top:24px;right:24px;width:60px;height:60px;border:2px solid #b41e1e;border-radius:8px;display:grid;place-items:center;color:#b41e1e;font-weight:800;font-size:18px;letter-spacing:.06em;animation:sealRotate 12s ease-in-out infinite;background:rgba(244,236,220,.8)}
+@keyframes sealRotate{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.head{padding:60px 24px 40px;text-align:center;border-bottom:1px solid #c9b899;position:relative}
+.eyebrow{font-size:12px;letter-spacing:.6em;color:#b41e1e;text-transform:uppercase;margin-bottom:18px;font-weight:600}
+.name{font-size:clamp(44px,8vw,84px);font-weight:700;letter-spacing:.06em;color:#1c2845;margin-bottom:16px;line-height:1.15;position:relative;display:inline-block}
+.name:after{content:"";position:absolute;left:50%;bottom:-6px;width:64px;height:2px;background:#b41e1e;transform:translateX(-50%) scaleX(0);transform-origin:center;animation:lineDraw 1.4s cubic-bezier(.7,0,.3,1) forwards;animation-delay:.6s}
+@keyframes lineDraw{to{transform:translateX(-50%) scaleX(1)}}
+.tag{font-size:14px;letter-spacing:.4em;color:#5a5040;font-family:"Klee One",serif}
+.cover{display:flex;flex-direction:column;align-items:center;gap:24px;padding:40px 0 48px}
+@media(min-width:900px){.cover{flex-direction:row;justify-content:center;gap:48px}}
+.img-01{width:180px;height:240px;background:#e8dfd0;border:1px solid #c9b899;display:grid;place-items:center;color:#a8714a;font-family:monospace;font-size:11px;position:relative;flex-shrink:0}
+.img-01:before{content:"";position:absolute;inset:-8px;border:1px solid #b41e1e;pointer-events:none}
+.tate{font-family:"Shippori Mincho",serif;font-size:18px;line-height:2.4;color:#1c2845;writing-mode:vertical-rl;height:240px;letter-spacing:.1em;opacity:0;animation:tate 1.2s ease forwards;animation-delay:.8s}
+@keyframes tate{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+.section{padding:48px 0;border-top:1px solid #c9b899}
+.section-h{font-size:13px;letter-spacing:.6em;color:#b41e1e;text-transform:uppercase;margin-bottom:24px;text-align:center;font-weight:600}
+.intro{font-family:"Klee One",serif;font-size:16px;line-height:2.1;color:#3a3527;max-width:680px;margin:0 auto;text-align:left;padding:0 8px}
+.skills{display:grid;grid-template-columns:1fr;gap:14px;max-width:780px;margin:0 auto}
+@media(min-width:700px){.skills{grid-template-columns:repeat(3,1fr)}}
+.skill{background:#fdf8eb;border:1px solid #c9b899;padding:24px;text-align:center;position:relative;opacity:0;transform:translateY(20px);transition:.9s}
+.skill.in{opacity:1;transform:translateY(0)}
+.skill:before{content:attr(data-n);position:absolute;top:14px;left:14px;color:#b41e1e;font-size:14px;font-weight:700;font-family:"Shippori Mincho",serif}
+.skill-h{font-size:20px;font-weight:700;color:#1c2845;margin-bottom:8px;letter-spacing:.06em}
+.skill-d{font-size:13px;line-height:1.8;color:#5a5040;font-family:"Klee One",serif}
+.haiku{font-size:18px;line-height:2.4;color:#1c2845;text-align:center;letter-spacing:.2em;padding:40px 0;font-style:normal;font-family:"Shippori Mincho",serif;font-weight:500}
+.haiku span{display:block;animation:haikuRise 1.2s ease forwards;opacity:0}
+.haiku span:nth-child(1){animation-delay:.2s}
+.haiku span:nth-child(2){animation-delay:.5s}
+.haiku span:nth-child(3){animation-delay:.8s}
+@keyframes haikuRise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.foot{padding:32px 0 16px;text-align:center;font-size:13px;letter-spacing:.4em;color:#5a5040;border-top:1px solid #c9b899;font-family:"Klee One",serif}
+.foot a{color:#b41e1e;text-decoration:none;margin:0 14px;font-weight:600}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="seal">名</div>
+  <header class="head">
+    <p class="eyebrow">和名刺 &middot; 春</p>
+    <h1 class="name">あなたの名前</h1>
+    <p class="tag">職人 &middot; 案内人 &middot; 物書き</p>
+  </header>
+  <section class="cover">
+    <div class="img-01">[ 01<br>portrait ]</div>
+    <p class="tate">静かなる仕事を、ゆっくり、確かに。</p>
+  </section>
+  <section class="section">
+    <h2 class="section-h">略 歴</h2>
+    <p class="intro">ここに自己紹介を5-6行。和モダンは「静けさと品格」が命。装飾を抑え、余白に語らせる。「いる」ことを伝える文章で。</p>
+  </section>
+  <section class="section">
+    <h2 class="section-h">手仕事</h2>
+    <div class="skills">
+      <div class="skill js-fade" data-n="壱"><h3 class="skill-h">編む</h3><p class="skill-d">物語や場を編む仕事。</p></div>
+      <div class="skill js-fade" data-n="弐"><h3 class="skill-h">伝える</h3><p class="skill-d">言葉や形にして渡す仕事。</p></div>
+      <div class="skill js-fade" data-n="参"><h3 class="skill-h">守る</h3><p class="skill-d">大切なものを次へ繋ぐ仕事。</p></div>
+    </div>
+  </section>
+  <p class="haiku"><span>言葉ひとつ、</span><span>静かに置く、</span><span>仕事です。</span></p>
+  <footer class="foot">便り &middot; <a href="#">手紙</a><a href="#">便箋</a><a href="#">投稿</a></footer>
+</div>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.2});
+document.querySelectorAll('.js-fade').forEach((el,i)=>setTimeout(()=>io.observe(el),i*200));
+</script>
+</body></html>

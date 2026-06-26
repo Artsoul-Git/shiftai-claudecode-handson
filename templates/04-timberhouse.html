@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ティンバー・ハウス ─ WEB名刺サンプル</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Shippori Mincho",serif;background:#f3ece0;color:#3a2a1a;min-height:100vh;display:flex;justify-content:center;padding:24px 16px;background-image:repeating-linear-gradient(180deg,transparent 0,transparent 80px,rgba(110,72,40,.04) 80px,rgba(110,72,40,.04) 81px);background-attachment:fixed}
+.stage{width:100%;max-width:1000px}
+.label{font-size:11px;letter-spacing:.4em;color:#a8714a;text-transform:uppercase;margin-bottom:8px;font-family:monospace;text-align:center}
+.head{display:flex;gap:24px;align-items:center;justify-content:center;padding:32px 0;margin-bottom:40px;border-bottom:1px solid #c9b899;flex-wrap:wrap}
+@media(min-width:900px){.head{gap:48px}}
+.img-01{width:140px;height:180px;background:#e5d6bd;display:grid;place-items:center;color:#a8714a;font-family:monospace;font-size:11px;border:1px solid #c9b899;flex-shrink:0}
+.head-text{padding-bottom:8px;text-align:left}
+@media(max-width:600px){.head-text{text-align:center}}
+.name{font-size:34px;font-weight:600;letter-spacing:.04em;margin:6px 0;line-height:1.3}
+@media(min-width:900px){.name{font-size:42px}}
+.tagline{color:#a8714a;font-size:13px;letter-spacing:.18em}
+.section{margin:36px 0;padding-left:18px;border-left:2px solid #a8714a}
+.section h2{font-size:14px;letter-spacing:.4em;color:#a8714a;margin-bottom:16px;font-weight:400}
+.intro{font-size:15px;line-height:2.1;color:#3a2a1a;column-count:1}
+@media(min-width:900px){.intro{column-count:2;column-gap:40px;column-rule:1px solid #c9b899}}
+.works{display:grid;grid-template-columns:1fr;gap:16px;margin-top:8px}
+@media(min-width:700px){.works{grid-template-columns:1fr 1fr}}
+.work{background:#e5d6bd;aspect-ratio:4/3;display:grid;place-items:center;color:#a8714a;font-family:monospace;font-size:11px;border:1px solid #c9b899;position:relative;overflow:hidden;opacity:0;transform:translateY(16px);transition:.8s}
+.work.in{opacity:1;transform:translateY(0)}
+.work-cap{position:absolute;bottom:8px;left:8px;right:8px;background:rgba(58,42,26,.85);color:#f3ece0;padding:8px 12px;font-size:12px;letter-spacing:.06em;transform:translateY(120%);transition:.4s}
+.work:hover .work-cap{transform:translateY(0)}
+.poem{font-size:16px;line-height:2.6;color:#3a2a1a;text-align:right;writing-mode:vertical-rl;height:280px;margin:24px auto;padding:8px 0}
+.foot{margin-top:48px;padding-top:24px;border-top:1px solid #c9b899;text-align:center;color:#a8714a;font-size:12px;letter-spacing:.3em}
+.foot a{color:#3a2a1a;text-decoration:none;margin:0 12px;font-weight:600}
+</style>
+</head>
+<body>
+<div class="stage">
+  <p class="label">TIMBER HOUSE &mdash; 04</p>
+  <header class="head">
+    <div class="img-01">[ 01<br>portrait ]</div>
+    <div class="head-text">
+      <p class="tagline">ARCHITECT &middot; CRAFTSMAN</p>
+      <h1 class="name">あなたの名前</h1>
+    </div>
+  </header>
+  <section class="section">
+    <h2>PROFILE</h2>
+    <p class="intro">ここに自己紹介を6-8行で。木の家を建てる人、古いものを直す人、土地のものを編む人――そんな静かな仕事の手触りが伝わる文章にする。読み手が「この人と何かを始めたい」と思える、土の匂いがする言葉で。</p>
+  </section>
+  <section class="section">
+    <h2>WORKS</h2>
+    <div class="works">
+      <div class="work js-fade">[02] work-1<div class="work-cap">作品①の名前 / 2024</div></div>
+      <div class="work js-fade">[03] work-2<div class="work-cap">作品②の名前 / 2023</div></div>
+    </div>
+  </section>
+  <p class="poem">木の家に、人の暮らしが、もどる</p>
+  <footer class="foot">CONTACT &middot; <a href="#">Mail</a><a href="#">Insta</a><a href="#">Studio</a></footer>
+</div>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.2});
+document.querySelectorAll('.js-fade').forEach((el,i)=>{setTimeout(()=>io.observe(el),i*200)});
+</script>
+</body></html>

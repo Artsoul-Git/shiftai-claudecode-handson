@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>エレガント・マガジン ─ WEB名刺サンプル</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&family=Shippori+Mincho:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Cormorant Garamond","Shippori Mincho",serif;background:#f5efe4;color:#1f1a14;min-height:100vh;display:flex;justify-content:center;padding:32px 16px;line-height:1.6}
+.stage{width:100%;max-width:1100px}
+.top{display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:1px solid #c9a96e;margin-bottom:24px;font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:#1f1a14}
+.top .num{color:#c9a96e;font-weight:700}
+.cover{display:grid;grid-template-columns:1fr;gap:32px;padding:24px 0 48px;align-items:center}
+@media(min-width:900px){.cover{grid-template-columns:1fr 1fr;gap:64px;padding:48px 0 80px}}
+.cover-text{opacity:0;animation:rise 1s ease forwards;animation-delay:.4s}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.kicker{font-size:13px;letter-spacing:.5em;text-transform:uppercase;color:#c9a96e;font-weight:500;margin-bottom:14px}
+.name{font-size:clamp(56px,9vw,108px);font-weight:300;line-height:1;letter-spacing:-.02em;margin-bottom:20px}
+.name em{font-style:italic;color:#c9a96e;font-weight:500}
+.lead{font-size:21px;line-height:1.7;color:#3a342a;font-weight:300;max-width:520px}
+.cover-img{position:relative;opacity:0;animation:rise 1s ease forwards;animation-delay:.7s}
+.img-01{width:100%;aspect-ratio:3/4;background:linear-gradient(180deg,#e8dfd0,#d4c6a8);display:grid;place-items:center;color:#8a7a5c;font-family:monospace;font-size:12px;border-radius:2px;box-shadow:0 30px 60px rgba(31,26,20,.2)}
+.cover-img:before{content:"";position:absolute;top:-20px;left:-20px;right:20px;bottom:20px;border:1px solid #c9a96e;z-index:-1;animation:shift 8s ease-in-out infinite}
+@keyframes shift{0%,100%{transform:translate(0)}50%{transform:translate(-8px,-8px)}}
+.dropcap{display:inline-block;float:left;font-size:84px;line-height:.85;font-style:italic;color:#c9a96e;font-weight:700;margin:6px 14px 0 0}
+.article{display:grid;grid-template-columns:1fr;gap:32px;padding:48px 0;border-top:1px solid #c9a96e}
+@media(min-width:900px){.article{grid-template-columns:200px 1fr;gap:64px}}
+.article-h{font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:#c9a96e;font-weight:700;padding-top:8px}
+.article-body{font-size:18px;line-height:1.85;color:#1f1a14}
+.article-body p+p{margin-top:18px}
+.cols{padding:48px 0;border-top:1px solid #c9a96e;display:grid;grid-template-columns:1fr;gap:32px}
+@media(min-width:700px){.cols{grid-template-columns:repeat(3,1fr);gap:48px}}
+.col{opacity:0;transform:translateY(20px);transition:.9s}
+.col.in{opacity:1;transform:translateY(0)}
+.col-roman{font-style:italic;font-size:16px;color:#c9a96e;margin-bottom:10px;letter-spacing:.06em}
+.col-h{font-size:26px;font-weight:500;margin-bottom:10px;line-height:1.2}
+.col-p{font-size:15px;line-height:1.85;color:#3a342a}
+.foot{margin-top:48px;padding:24px 0;border-top:1px solid #c9a96e;display:flex;justify-content:space-between;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:#1f1a14;flex-wrap:wrap;gap:14px}
+.foot a{color:#c9a96e;text-decoration:none;margin-left:20px;font-style:italic}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="top">
+    <span>Edition 01 · 2026</span>
+    <span class="num">No. 047</span>
+  </div>
+  <section class="cover">
+    <div class="cover-text">
+      <p class="kicker">Profile / The Maker</p>
+      <h1 class="name">Your<br>Name<em>.</em></h1>
+      <p class="lead">An editor, a quiet maker, a person who believes in good words and slow craft.</p>
+    </div>
+    <div class="cover-img"><div class="img-01">[ 01 portrait ]</div></div>
+  </section>
+  <section class="article">
+    <h2 class="article-h">Profile</h2>
+    <div class="article-body">
+      <p><span class="dropcap">A</span>fter many years of working with words and books, I came to believe that craft is patience — and patience is the most luxurious of all materials. ここに英文と日本語を混ぜて、雑誌の特集記事のような自己紹介を書く。</p>
+      <p>仕事のスタイル、大切にしていること、これから組みたい仲間像を、ゆっくりとした文体で。読み手が「この人と話してみたい」と思えるリズムで。</p>
+    </div>
+  </section>
+  <section class="cols">
+    <div class="col js-fade"><p class="col-roman">I.</p><h3 class="col-h">Editorial</h3><p class="col-p">ここに、編集・誌面設計の仕事の説明を2-3行。</p></div>
+    <div class="col js-fade"><p class="col-roman">II.</p><h3 class="col-h">Branding</h3><p class="col-p">企業や個人のブランドストーリーを言葉と見た目で。</p></div>
+    <div class="col js-fade"><p class="col-roman">III.</p><h3 class="col-h">Curation</h3><p class="col-p">本・モノ・場所のキュレーションも手がけます。</p></div>
+  </section>
+  <footer class="foot">
+    <span>Correspondence</span>
+    <span><a href="#">Mail</a><a href="#">Note</a><a href="#">Instagram</a></span>
+  </footer>
+</div>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.2});
+document.querySelectorAll('.js-fade').forEach((el,i)=>setTimeout(()=>io.observe(el),i*200));
+</script>
+</body></html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>マイ・パレット ─ WEB名刺サンプル</title>
+<style>
+:root{--bg:#FFF5E6;--ink:#3D2914;--accent:#FF8C42;--soft:#FFE4C7;--sub:#8B6F47}
+*{box-sizing:border-box;margin:0;padding:0;transition:background .6s,color .6s,border-color .6s}
+body{font-family:"Hiragino Maru Gothic Pro","Yu Gothic UI",sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;justify-content:center;padding:24px 16px}
+.stage{width:100%;max-width:480px}
+@media(min-width:900px){.stage{max-width:980px;display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:24px}}
+.col{display:flex;flex-direction:column;align-items:center;text-align:center;width:100%}
+.palette-bar{display:flex;gap:8px;margin-bottom:24px;justify-content:center;flex-wrap:wrap}
+.pal-btn{border:none;background:var(--soft);color:var(--ink);padding:8px 14px;border-radius:999px;cursor:pointer;font-weight:700;font-size:12px}
+.pal-btn.active{background:var(--accent);color:#fff}
+.tag{color:var(--accent);font-size:14px;font-weight:700;margin-bottom:6px}
+.name{font-size:34px;font-weight:800;letter-spacing:.02em;margin:6px 0 16px}
+.img-01{width:240px;aspect-ratio:1/1;background:var(--soft);border-radius:24px;display:grid;place-items:center;color:var(--sub);font-family:monospace;font-size:14px;margin:8px auto}
+.intro{line-height:2;font-size:15px;color:var(--ink);margin:20px 0 0;padding:18px;background:var(--soft);border-radius:16px;border-left:4px solid var(--accent);text-align:left;width:100%;max-width:420px}
+h2{font-size:18px;color:var(--accent);margin:24px 0 12px;font-weight:800;text-align:center;width:100%}
+.skills{list-style:none;width:100%;max-width:380px;margin:0 auto}
+.skills li{padding:12px 14px;background:var(--soft);border-radius:12px;margin:8px 0;font-weight:700;text-align:left}
+.skills li:before{content:"✿ ";color:var(--accent)}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;width:100%;max-width:380px}
+.gallery div{aspect-ratio:1/1;background:var(--soft);border-radius:16px;display:grid;place-items:center;color:var(--sub);font-family:monospace;font-size:12px}
+.foot{text-align:center;margin-top:32px;color:var(--sub);font-size:13px;width:100%}
+.foot a{color:var(--accent);text-decoration:none;margin:0 8px;font-weight:700}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="col">
+    <nav class="palette-bar">
+      <button class="pal-btn active" data-pal="morning">🌅 朝</button>
+      <button class="pal-btn" data-pal="noon">☀️ 昼</button>
+      <button class="pal-btn" data-pal="dusk">🌇 夕</button>
+      <button class="pal-btn" data-pal="night">🌙 夜</button>
+      <button class="pal-btn" data-pal="midnight">✨ 深夜</button>
+    </nav>
+    <p class="tag">CREATOR &middot; STORYTELLER</p>
+    <h1 class="name">あなたの名前</h1>
+    <div class="img-01">[ 01 portrait ]</div>
+    <p class="intro">ここに自己紹介。気分や時間帯で配色が変わるように、あなたの世界観も日々ゆらいでいい。そんな許可を、この名刺に。</p>
+  </div>
+  <div class="col">
+    <h2>わたしの引き出し</h2>
+    <ul class="skills"><li>できること①を1行で</li><li>できること②</li><li>できること③</li></ul>
+    <h2>わたしの日常</h2>
+    <div class="gallery"><div>[02] hobby-1</div><div>[03] hobby-2</div></div>
+    <footer class="foot">CONTACT &nbsp;・&nbsp;<a href="#">X</a><a href="#">Insta</a><a href="#">Note</a></footer>
+  </div>
+</div>
+<script>
+const palettes={
+  morning:{bg:'#FFF5E6',ink:'#3D2914',accent:'#FF8C42',soft:'#FFE4C7',sub:'#8B6F47'},
+  noon:{bg:'#E8F5FE',ink:'#1A3A5C',accent:'#2196F3',soft:'#D0E8FF',sub:'#5C7A99'},
+  dusk:{bg:'#FFE9E0',ink:'#5C2A1A',accent:'#E64A19',soft:'#FFD1BD',sub:'#995543'},
+  night:{bg:'#1A1B3A',ink:'#E8E9F7',accent:'#7C3AED',soft:'#2D2F5C',sub:'#9CA0D9'},
+  midnight:{bg:'#0D0D2B',ink:'#F0E6FF',accent:'#EC4899',soft:'#1F1F4A',sub:'#A78BD9'}
+};
+document.querySelectorAll('.pal-btn').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.pal-btn').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  const p=palettes[b.dataset.pal];
+  Object.keys(p).forEach(k=>document.documentElement.style.setProperty('--'+k,p[k]));
+}));
+</script>
+</body></html>

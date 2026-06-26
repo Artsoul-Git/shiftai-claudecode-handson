@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ミニマル・スイス様式 ─ WEB名刺サンプル</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Noto+Sans+JP:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Inter","Noto Sans JP",sans-serif;background:#fff;color:#000;min-height:100vh;display:flex;justify-content:center;padding:24px 16px;line-height:1.5}
+.stage{width:100%;max-width:980px}
+.rule{height:2px;background:#000;transform:scaleX(0);transform-origin:left;animation:rule 1.2s cubic-bezier(.7,0,.3,1) forwards}
+.rule.delay-1{animation-delay:.2s}
+.rule.delay-2{animation-delay:.6s}
+.rule.delay-3{animation-delay:1.2s}
+@keyframes rule{to{transform:scaleX(1)}}
+.meta{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;padding:14px 0;opacity:0;animation:fade .6s ease forwards;animation-delay:.4s}
+@keyframes fade{to{opacity:1}}
+.head{padding:60px 0;display:grid;grid-template-columns:1fr;gap:48px}
+@media(min-width:900px){.head{grid-template-columns:auto 1fr;align-items:end}}
+.img-01{width:180px;height:180px;background:#000;color:#fff;display:grid;place-items:center;font-family:monospace;font-size:11px;letter-spacing:.1em}
+.head-text{display:flex;flex-direction:column;gap:8px}
+.num{font-size:13px;font-weight:700;letter-spacing:.15em;color:#000}
+.name{font-size:clamp(56px,10vw,128px);font-weight:900;line-height:.9;letter-spacing:-.04em;text-transform:uppercase;opacity:0;animation:slide .9s cubic-bezier(.7,0,.3,1) forwards;animation-delay:.7s}
+@keyframes slide{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.tagline{font-size:18px;font-weight:300;color:#000;max-width:520px;line-height:1.5}
+.grid-12{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;padding:60px 0}
+.col-intro{grid-column:1/-1}
+@media(min-width:900px){.col-intro{grid-column:1/8}}
+.col-label{grid-column:1/-1}
+@media(min-width:900px){.col-label{grid-column:9/-1}}
+.col-label p{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;padding-bottom:8px;border-bottom:1px solid #000;margin-bottom:8px}
+.intro p{font-size:18px;line-height:1.7;font-weight:400}
+.intro p+p{margin-top:16px}
+.skills{padding:48px 0;display:grid;grid-template-columns:1fr;gap:0}
+@media(min-width:900px){.skills{grid-template-columns:repeat(3,1fr)}}
+.skill{padding:24px 0;border-top:1px solid #000;opacity:0;transform:translateY(20px);transition:.8s}
+.skill.in{opacity:1;transform:translateY(0)}
+@media(min-width:900px){.skill{padding:24px;border-top:1px solid #000;border-right:1px solid #000}.skill:last-child{border-right:0}}
+.skill-n{font-size:11px;font-weight:700;letter-spacing:.15em;display:block;margin-bottom:8px}
+.skill-title{font-size:24px;font-weight:700;margin-bottom:8px}
+.skill-desc{font-size:14px;line-height:1.7}
+.foot{padding:32px 0 16px;display:flex;justify-content:space-between;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;flex-wrap:wrap;gap:16px}
+.foot a{color:#000;text-decoration:none;margin-left:20px}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="meta"><span>Personal · 2026</span><span>Edition 01</span></div>
+  <div class="rule delay-1"></div>
+  <header class="head">
+    <div class="img-01">[ 01 portrait ]</div>
+    <div class="head-text">
+      <span class="num">№ 01 / Profile</span>
+      <h1 class="name">Your<br>Name</h1>
+      <p class="tagline">Designer / Editor based in your city. Crafting words and ideas that move quietly.</p>
+    </div>
+  </header>
+  <div class="rule delay-2"></div>
+  <section class="grid-12">
+    <div class="col-intro intro">
+      <p>ここに自己紹介を3-4行。スイス様式は罫線と余白だけで「強さ」を作る。装飾なし、装飾的なエフェクトなし、フォントのウェイト差と整列だけで構成。</p>
+      <p>名詞を短く、動詞を強く。形容詞は最小限に。読み手の知性に賭けるレイアウト。</p>
+    </div>
+    <div class="col-label"><p>Discipline</p><p>Editorial Design · Brand Strategy · Type</p></div>
+  </section>
+  <div class="rule delay-3"></div>
+  <section class="skills">
+    <div class="skill js-fade"><span class="skill-n">01.</span><div class="skill-title">Editorial</div><p class="skill-desc">編集・誌面設計の専門。骨格から文字組みまで。</p></div>
+    <div class="skill js-fade"><span class="skill-n">02.</span><div class="skill-title">Branding</div><p class="skill-desc">企業や個人の言葉と見た目を一致させる仕事。</p></div>
+    <div class="skill js-fade"><span class="skill-n">03.</span><div class="skill-title">Typography</div><p class="skill-desc">読みやすさと美しさを両立する書体設計。</p></div>
+  </section>
+  <footer class="foot">
+    <span>Contact</span>
+    <span><a href="#">X</a><a href="#">Mail</a><a href="#">Note</a></span>
+  </footer>
+</div>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.2});
+document.querySelectorAll('.js-fade').forEach((el,i)=>setTimeout(()=>io.observe(el),i*150));
+</script>
+</body></html>

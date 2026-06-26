@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>サイバーパンク・ネオン ─ WEB名刺サンプル</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Orbitron:wght@500;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"JetBrains Mono",monospace;background:#05050d;color:#e0e0ff;min-height:100vh;display:flex;justify-content:center;padding:24px 16px;background-image:repeating-linear-gradient(0deg,transparent 0,transparent 24px,rgba(0,255,255,.04) 24px,rgba(0,255,255,.04) 25px),repeating-linear-gradient(90deg,transparent 0,transparent 24px,rgba(255,0,255,.04) 24px,rgba(255,0,255,.04) 25px);background-attachment:fixed;overflow-x:hidden}
+.stage{width:100%;max-width:980px;position:relative;z-index:1}
+.scan{position:fixed;inset:0;background:linear-gradient(180deg,transparent 0%,rgba(0,255,255,.04) 50%,transparent 100%);background-size:100% 8px;pointer-events:none;animation:scan 4s linear infinite;z-index:0}
+@keyframes scan{from{background-position-y:0}to{background-position-y:200px}}
+.head{display:flex;flex-direction:column;align-items:center;text-align:center;padding:32px 0 48px;border-bottom:1px solid rgba(0,255,255,.3)}
+.tag{font-size:11px;letter-spacing:.4em;color:#00ffff;text-transform:uppercase;margin-bottom:14px;text-shadow:0 0 10px #00ffff,0 0 20px #00ffff}
+.img-01{width:160px;height:160px;border:2px solid #ff00ff;background:rgba(255,0,255,.08);display:grid;place-items:center;color:#ff00ff;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em;margin:0 auto 24px;box-shadow:0 0 30px rgba(255,0,255,.5),inset 0 0 30px rgba(255,0,255,.2);clip-path:polygon(15% 0,100% 0,100% 85%,85% 100%,0 100%,0 15%)}
+.name{font-family:"Orbitron",sans-serif;font-size:clamp(36px,7vw,72px);font-weight:800;letter-spacing:.04em;color:#fff;text-shadow:0 0 10px #00ffff,0 0 20px #00ffff,2px 2px 0 #ff00ff;position:relative;display:inline-block}
+.name:after{content:attr(data-text);position:absolute;left:0;top:0;color:#ff00ff;mix-blend-mode:screen;animation:glitch 4s infinite;clip-path:inset(0 0 80% 0)}
+@keyframes glitch{0%,90%,100%{clip-path:inset(0 0 80% 0);transform:translate(0)}92%{clip-path:inset(40% 0 30% 0);transform:translate(-3px,2px)}94%{clip-path:inset(60% 0 10% 0);transform:translate(2px,-1px)}96%{clip-path:inset(20% 0 50% 0);transform:translate(-2px,1px)}}
+.title{font-size:14px;letter-spacing:.3em;color:#ff00ff;margin-top:14px;text-shadow:0 0 8px #ff00ff}
+.terminal{background:#0a0a18;border:1px solid #00ffff;padding:24px;margin:32px auto 0;max-width:560px;text-align:left;box-shadow:0 0 30px rgba(0,255,255,.2)}
+.terminal-head{font-size:11px;color:#00ffff;letter-spacing:.2em;margin-bottom:16px;border-bottom:1px solid rgba(0,255,255,.3);padding-bottom:8px}
+.prompt{color:#00ff88;display:inline-block;margin-right:8px}
+.typed{display:inline-block;color:#fff}
+.cursor{display:inline-block;width:8px;height:14px;background:#00ffff;animation:blink 1s steps(1) infinite;vertical-align:middle;margin-left:2px}
+@keyframes blink{50%{opacity:0}}
+.grid{display:grid;grid-template-columns:1fr;gap:14px;margin:48px 0}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}}
+.module{border:1px solid #00ffff;background:rgba(0,255,255,.04);padding:18px;transition:.3s;position:relative;clip-path:polygon(0 0,100% 0,100% 80%,90% 100%,0 100%);opacity:0;transform:translateY(20px)}
+.module.in{opacity:1;transform:translateY(0);transition:opacity .8s,transform .8s}
+.module:hover{background:rgba(0,255,255,.12);box-shadow:0 0 30px rgba(0,255,255,.4);transform:translateY(-4px)}
+.module-n{font-size:11px;letter-spacing:.2em;color:#ff00ff}
+.module-title{font-size:18px;font-weight:700;color:#00ffff;margin:6px 0;text-shadow:0 0 8px #00ffff}
+.module-desc{font-size:13px;color:#aab}
+.foot{margin-top:32px;padding-top:18px;border-top:1px solid rgba(0,255,255,.3);text-align:center;font-size:11px;letter-spacing:.3em;color:#00ffff}
+.foot a{color:#ff00ff;text-decoration:none;margin:0 12px;text-shadow:0 0 8px #ff00ff}
+</style>
+</head>
+<body>
+<div class="scan"></div>
+<div class="stage">
+  <header class="head">
+    <p class="tag">// SYSTEM ONLINE //</p>
+    <div class="img-01">[ 01<br>portrait.dat ]</div>
+    <h1 class="name" data-text="YOUR NAME">YOUR NAME</h1>
+    <p class="title">DEVELOPER · DIGITAL ARTIST</p>
+    <div class="terminal">
+      <div class="terminal-head">$ ~/whoami.exe</div>
+      <div><span class="prompt">&gt;</span><span class="typed" id="typed"></span><span class="cursor"></span></div>
+    </div>
+  </header>
+  <section class="grid">
+    <div class="module js-fade"><p class="module-n">[001]</p><h3 class="module-title">FRONTEND</h3><p class="module-desc">React / Vue / Next.js などの実装。</p></div>
+    <div class="module js-fade"><p class="module-n">[002]</p><h3 class="module-title">DESIGN</h3><p class="module-desc">UI / UX / モーション設計。</p></div>
+    <div class="module js-fade"><p class="module-n">[003]</p><h3 class="module-title">AI / ML</h3><p class="module-desc">生成AI活用とプロンプト設計。</p></div>
+  </section>
+  <footer class="foot">// CONTACT // <a href="#">X</a><a href="#">GIT</a><a href="#">MAIL</a></footer>
+</div>
+<script>
+const txt='ここに自己紹介を1行。';
+let i=0;const el=document.getElementById('typed');
+const type=()=>{if(i<txt.length){el.textContent+=txt[i++];setTimeout(type,80);}};setTimeout(type,800);
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.2});
+document.querySelectorAll('.js-fade').forEach((el,i)=>setTimeout(()=>io.observe(el),i*150));
+</script>
+</body></html>
