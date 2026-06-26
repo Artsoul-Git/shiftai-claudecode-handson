@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>縦型モバイル・エディトリアル ─ WEB名刺サンプル</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+  :root{--ink:#111;--red:#FF0000;--gray:#666;--line:#e6e6e6;--bg:#f2f2f2;--card:#fff}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;justify-content:center;padding:0;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .card{width:100%;max-width:480px;background:var(--card);position:relative}
+  @media(min-width:520px){
+    body{padding:32px 16px}
+    .card{margin:0 auto;box-shadow:0 14px 40px rgba(0,0,0,.08);border-radius:8px;overflow:hidden}
+  }
+  /* ===== ロゴ ===== */
+  .logo{padding:14px 18px 0;display:flex;align-items:center;gap:8px}
+  .logo .en{background:var(--red);color:#fff;font-weight:900;font-size:14px;padding:5px 10px;letter-spacing:.06em;line-height:1}
+  .logo .ja{color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.06em}
+  /* ===== ヒーロー ===== */
+  .hero{position:relative;padding:16px 18px 0;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:end}
+  .hero-text{padding-bottom:8px;z-index:2}
+  .catch{font-size:30px;line-height:1.22;font-weight:900;letter-spacing:-.01em;color:var(--ink)}
+  .catch .mark{background:var(--red);color:#fff;padding:0 6px;display:inline-block;margin:1px 0}
+  .catch .small{display:block;font-size:14px;color:var(--gray);font-weight:700;margin-top:8px;letter-spacing:0}
+  .hero-photo{position:relative;z-index:1}
+  .hero-photo .ph{
+    width:100%;aspect-ratio:3/5;
+    background:repeating-linear-gradient(45deg,#ececec 0 8px,transparent 8px 16px),#f5f5f5;
+    border:2px dashed #ccc;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:var(--gray);font-size:11px;text-align:center;padding:8px;
+    margin-bottom:-32px;
+    position:relative;
+  }
+  .hero-photo .ph .num{position:absolute;top:6px;left:6px;background:var(--red);color:#fff;font-size:10px;padding:2px 6px;font-weight:700;letter-spacing:.04em;font-family:monospace}
+  .hero-photo .ph .ico{font-size:24px;line-height:1;margin-bottom:6px}
+  .hero-photo .ph .lbl{font-weight:900;font-size:11px;color:var(--ink);letter-spacing:.04em}
+  .hero-photo .ph .hint{font-size:9.5px;color:var(--gray);margin-top:4px;line-height:1.5}
+  /* ===== 氏名ブロック ===== */
+  .name-block{padding:14px 18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;z-index:3;background:var(--card)}
+  .name-block .corp{font-size:11px;color:var(--gray);letter-spacing:.08em;margin-bottom:2px;font-weight:500}
+  .name-block .name{font-size:26px;font-weight:900;color:var(--ink);letter-spacing:-.005em;line-height:1.2}
+  .name-block .role{font-size:12px;color:var(--gray);margin-top:4px;font-weight:500}
+  /* ===== セクション共通 ===== */
+  .sec{padding:22px 18px;border-bottom:1px solid var(--line)}
+  .sec-label{display:inline-block;background:var(--red);color:#fff;font-size:10px;font-weight:900;padding:3px 9px;letter-spacing:.16em;margin-bottom:10px;font-family:monospace}
+  .sec-h{font-size:18px;font-weight:900;line-height:1.4;margin-bottom:10px;border-left:3px solid var(--red);padding-left:10px}
+  .sec-h.no-line{border-left:0;padding-left:0}
+  .body{font-size:14px;line-height:1.85;color:var(--ink)}
+  /* ===== 強み3枠 ===== */
+  .points{list-style:none}
+  .points li{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .points li:last-child{border-bottom:0;padding-bottom:0}
+  .points .n{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:900}
+  .points h3{font-weight:700;font-size:15px;margin-bottom:3px;line-height:1.4}
+  .points p{color:var(--gray);font-size:12.5px;line-height:1.7}
+  /* ===== ロードマップ ===== */
+  .roadmap-wrap{margin-top:14px;padding:18px 12px;background:#fafafa;border:1px solid var(--line);overflow-x:auto}
+  .mermaid{font-family:"Noto Sans JP",sans-serif;text-align:center}
+  /* ===== CTA ===== */
+  .cta{padding:18px 18px 22px}
+  .cta-btn{display:block;width:100%;background:var(--red);color:#fff;padding:16px;text-align:center;font-weight:900;letter-spacing:.04em;text-decoration:none;font-size:15px;transition:background .2s}
+  .cta-btn:hover{background:#cc0000}
+  .cta-note{font-size:11.5px;color:var(--gray);text-align:center;margin-top:10px;line-height:1.7}
+  /* ===== フッター ===== */
+  .footer{background:#111;color:#fff;padding:20px 18px;text-align:center;font-size:12px}
+  .footer .mail{color:#fff;text-decoration:none;display:block;margin-bottom:6px;font-weight:700;letter-spacing:.04em}
+  .footer .cr{color:#888;font-size:10px;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div class="card">
+  <!-- ロゴ -->
+  <div class="logo">
+    <span class="en">YOUR LOGO</span>
+    <span class="ja">あなたのロゴ</span>
+  </div>
+
+  <!-- ヒーロー -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="catch">○○な人を、<br><span class="mark">本気で応援</span><br>します。<span class="small">あなたの一行サブコピー。</span></p>
+    </div>
+    <div class="hero-photo">
+      <div class="ph">
+        <span class="num">[01]</span>
+        <div class="ico">📷</div>
+        <div class="lbl">白抜き人物写真</div>
+        <div class="hint">背景透過PNGがおすすめ。<br>足元がここで氏名ブロックに重なる設計。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 氏名ブロック -->
+  <section class="name-block">
+    <p class="corp">○○株式会社 ／ ○○事業部</p>
+    <h1 class="name">あなたの名前</h1>
+    <p class="role">肩書き ／ 専門分野</p>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="sec">
+    <span class="sec-label">ABOUT</span>
+    <h2 class="sec-h no-line">わたしについて</h2>
+    <p class="body">ここに自己紹介を3〜4行。仕事への思い、なぜこの仕事をしているのか、これから組みたい仲間像。雑誌のプロフィールページのような端正な文体で書くと、このスタイルの良さが活きる。</p>
+  </section>
+
+  <!-- 強み -->
+  <section class="sec">
+    <span class="sec-label">STRENGTH</span>
+    <h2 class="sec-h">わたしの強み</h2>
+    <ul class="points">
+      <li>
+        <div class="n">①</div>
+        <div>
+          <h3>強み①の見出し</h3>
+          <p>誰にどんな価値を、を1〜2行で。</p>
+        </div>
+      </li>
+      <li>
+        <div class="n">②</div>
+        <div>
+          <h3>強み②の見出し</h3>
+          <p>誰にどんな価値を、を1〜2行で。</p>
+        </div>
+      </li>
+      <li>
+        <div class="n">③</div>
+        <div>
+          <h3>強み③の見出し</h3>
+          <p>誰にどんな価値を、を1〜2行で。</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ロードマップ -->
+  <section class="sec">
+    <span class="sec-label">ROADMAP</span>
+    <h2 class="sec-h">これからの道のり</h2>
+    <div class="roadmap-wrap">
+      <pre class="mermaid">
+flowchart TD
+    A["今 / Now"]:::now --> B["STEP 1<br/>○○を始める"]:::step
+    B --> C["STEP 2<br/>○○を整える"]:::step
+    C --> D["STEP 3<br/>○○を広げる"]:::step
+    D --> E["STEP 4<br/>○○を仕組み化"]:::step
+    E --> F["ゴール / Goal"]:::goal
+    classDef now fill:#f2f2f2,stroke:#666,color:#111,stroke-width:1px
+    classDef step fill:#fff,stroke:#FF0000,color:#111,stroke-width:1.5px
+    classDef goal fill:#FF0000,stroke:#FF0000,color:#fff,stroke-width:1.5px
+      </pre>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta">
+    <a href="#" class="cta-btn">▶ Facebook で つながる</a>
+    <p class="cta-note">日々の活動や考えていることはFacebookで発信中。<br>お気軽にフォロー&メッセージをどうぞ。</p>
+  </div>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <a href="mailto:your@email.com" class="mail">your@email.com</a>
+    <p class="cr">© Your Name. All Rights Reserved.</p>
+  </footer>
+</div>
+
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      primaryColor: '#fff',
+      primaryTextColor: '#111',
+      primaryBorderColor: '#FF0000',
+      lineColor: '#FF0000',
+      secondaryColor: '#f2f2f2',
+      tertiaryColor: '#fff',
+      fontFamily: '"Noto Sans JP",sans-serif',
+      fontSize: '13px'
+    },
+    flowchart: { curve: 'linear', padding: 12, nodeSpacing: 24, rankSpacing: 30 }
+  });
+</script>
+</body>
+</html>
